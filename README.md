@@ -1,4 +1,5 @@
-# N04-PTTKPM-Nhom4
+# N04-PTTKPM-Nhom3
+
 Hệ Thống Tính Thuế Thu Nhập Cá Nhân
 Mục đích của phần mềm là hỗ trợ các tổ chức trong việc quản lý và tính toán thuế thu nhập cá nhân cho nhân viên một cách hiệu quả, chính xác và minh bạch. Phần mềm này được thiết kế để tự động hóa các quy trình phức tạp như tạm thu thuế hàng tháng, quyết toán thuế cuối năm, và xử lý các khoản thu nhập điều chỉnh (truy thu hoặc truy lĩnh), nhằm giảm thiểu sai sót, tiết kiệm thời gian, và đảm bảo tuân thủ đầy đủ các quy định pháp luật. Qua đó, phần mềm góp phần nâng cao hiệu suất quản lý thuế, giảm gánh nặng cho bộ phận kế toán, và cải thiện trải nghiệm của cả tổ chức và nhân viên.
 Phạm vi hệ thống :
