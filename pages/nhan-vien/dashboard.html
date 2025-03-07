@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Nhân Viên</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .dashboard-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .main-content {
+            padding: 20px;
+            height: 100vh;
+            /* overflow: hidden; */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+
+        .quick-actions {
+            margin-top: 30px;
+        }
+
+        .action-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .action-card:hover {
+            background: #e9ecef;
+            cursor: pointer;
+        }
+
+        .notification-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .notification-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s ease;
+        }
+
+        .notification-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .notification-item .date {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        .welcome-section {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="sidebar">
+        <div class="user-info text-center">
+            <h3>Nhân viên</h3>
+            <p id="employeeName">Chào mừng bạn!</p>
+        </div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html" class="active"><i class="fas fa-home"></i><span>Trang chủ</span></a></li>
+            <li><a href="salary-and-tax-report.html"><i class="fas fa-file-alt"></i><span>Xem lương và thuế
+                        TNCN</span></a></li>
+            <li><a href="annual-tax-report.html"><i class="fas fa-money-bill-wave"></i><span>Xem quyết toán thuế thu
+                        nhập cả năm</span></a></li>
+            <li><a href="profile.html"><i class="fas fa-user"></i><span>Thông tin cá nhân</span></a></li>
+            <li><a href="tax-calculator.html" class=""><i class="fas fa-calculator"></i> <span>Tính thử thuế
+                        TNCN</span></a></li>
+            <li><a href="../../index.html" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span>Đăng xuất</span></a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <div class="d-block d-md-none">
+            <button id="toggleMenu" class="btn btn-primary mb-3">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div class="welcome-section">
+            <h2><i class="fas fa-home"></i> Trang Chủ</h2>
+            <p class="mb-0">Chào mừng bạn đến với hệ thống quản lý thuế thu nhập cá nhân</p>
+        </div>
+
+        <div class="container">
+            <!-- Thống kê tổng quan -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="dashboard-card text-center">
+                        <i class="fas fa-money-bill-wave card-icon"></i>
+                        <h3 class="stat-value" id="totalSalary">0 VNĐ</h3>
+                        <p class="stat-label">Thu nhập tháng này</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="dashboard-card text-center">
+                        <i class="fas fa-file-invoice-dollar card-icon"></i>
+                        <h3 class="stat-value" id="totalTax">0 VNĐ</h3>
+                        <p class="stat-label">Thuế TNCN tháng này</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="dashboard-card text-center">
+                        <i class="fas fa-users card-icon"></i>
+                        <h3 class="stat-value" id="dependentCount">0</h3>
+                        <p class="stat-label">Người phụ thuộc</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Truy cập nhanh và thông báo -->
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="dashboard-card">
+                        <h4><i class="fas fa-bolt"></i> Truy cập nhanh</h4>
+                        <div class="quick-actions">
+                            <div class="action-card" onclick="window.location.href='salary-and-tax-report.html'">
+                                <h5><i class="fas fa-file-alt"></i> Xem báo cáo lương</h5>
+                                <p class="mb-0">Xem chi tiết lương và thuế TNCN của bạn</p>
+                            </div>
+                            <div class="action-card" onclick="window.location.href='tax-report.html'">
+                                <h5><i class="fas fa-calculator"></i> Xem quyết toán thuế</h5>
+                                <p class="mb-0">Xem báo cáo quyết toán thuế TNCN</p>
+                            </div>
+                            <div class="action-card" onclick="window.location.href='profile.html'">
+                                <h5><i class="fas fa-user-edit"></i> Cập nhật thông tin</h5>
+                                <p class="mb-0">Cập nhật thông tin cá nhân của bạn</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="dashboard-card">
+                        <h4><i class="fas fa-bell"></i> Thông báo mới</h4>
+                        <div class="notification-list" id="notificationList">
+                            <!-- Thông báo sẽ được thêm bằng JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../../js/dashboard-employee.js"></script>
+</body>
+
+</html>
